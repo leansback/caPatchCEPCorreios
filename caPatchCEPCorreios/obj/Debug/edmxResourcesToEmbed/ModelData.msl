@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CorporeRM_FabaoModelStoreContainer" CdmEntityContainer="CorporeRM_FabaoEntities">
+    <EntitySetMapping Name="GBAIRRO">
+      <EntityTypeMapping TypeName="CorporeRM_FabaoModel.GBAIRRO">
+        <MappingFragment StoreEntitySet="GBAIRRO">
+          <ScalarProperty Name="CODBAIRRO" ColumnName="CODBAIRRO" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="CODLOCALIDADE" ColumnName="CODLOCALIDADE" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="ABREVIATURA" ColumnName="ABREVIATURA" />
+          <ScalarProperty Name="RECCREATEDBY" ColumnName="RECCREATEDBY" />
+          <ScalarProperty Name="RECCREATEDON" ColumnName="RECCREATEDON" />
+          <ScalarProperty Name="RECMODIFIEDBY" ColumnName="RECMODIFIEDBY" />
+          <ScalarProperty Name="RECMODIFIEDON" ColumnName="RECMODIFIEDON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GLOCALIDADE">
+      <EntityTypeMapping TypeName="CorporeRM_FabaoModel.GLOCALIDADE">
+        <MappingFragment StoreEntitySet="GLOCALIDADE">
+          <ScalarProperty Name="CODLOCALIDADE" ColumnName="CODLOCALIDADE" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="CODIFICACAO" ColumnName="CODIFICACAO" />
+          <ScalarProperty Name="TIPOLOCALIDADE" ColumnName="TIPOLOCALIDADE" />
+          <ScalarProperty Name="SUBORDINACAO" ColumnName="SUBORDINACAO" />
+          <ScalarProperty Name="RECCREATEDBY" ColumnName="RECCREATEDBY" />
+          <ScalarProperty Name="RECCREATEDON" ColumnName="RECCREATEDON" />
+          <ScalarProperty Name="RECMODIFIEDBY" ColumnName="RECMODIFIEDBY" />
+          <ScalarProperty Name="RECMODIFIEDON" ColumnName="RECMODIFIEDON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GLOGRADOURO">
+      <EntityTypeMapping TypeName="CorporeRM_FabaoModel.GLOGRADOURO">
+        <MappingFragment StoreEntitySet="GLOGRADOURO">
+          <ScalarProperty Name="CODLOGRADOURO" ColumnName="CODLOGRADOURO" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="CODLOCALIDADE" ColumnName="CODLOCALIDADE" />
+          <ScalarProperty Name="CODBAIRROINI" ColumnName="CODBAIRROINI" />
+          <ScalarProperty Name="CODBAIRROFIM" ColumnName="CODBAIRROFIM" />
+          <ScalarProperty Name="NOME" ColumnName="NOME" />
+          <ScalarProperty Name="COMPLEMENTO" ColumnName="COMPLEMENTO" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="UTILIZATIPO" ColumnName="UTILIZATIPO" />
+          <ScalarProperty Name="RECCREATEDBY" ColumnName="RECCREATEDBY" />
+          <ScalarProperty Name="RECCREATEDON" ColumnName="RECCREATEDON" />
+          <ScalarProperty Name="RECMODIFIEDBY" ColumnName="RECMODIFIEDBY" />
+          <ScalarProperty Name="RECMODIFIEDON" ColumnName="RECMODIFIEDON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

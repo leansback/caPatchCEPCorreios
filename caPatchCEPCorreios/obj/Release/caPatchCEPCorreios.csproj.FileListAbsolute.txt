@@ -1,0 +1,10 @@
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\caPatchCEPCorreios.exe.config
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\caPatchCEPCorreios.exe
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\caPatchCEPCorreios.pdb
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\EntityFramework.dll
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\log4net.dll
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\EntityFramework.xml
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\bin\Release\log4net.xml
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\obj\Release\caPatchCEPCorreios.exe
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\obj\Release\caPatchCEPCorreios.pdb
+C:\Users\leandro.souza\Documents\Visual Studio 2013\Projects\caPatchCEPCorreios\caPatchCEPCorreios\obj\Release\caPatchCEPCorreios.csprojResolveAssemblyReference.cache

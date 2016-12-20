@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CorporeRM_FabaoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GBAIRRO">
+    <Key>
+      <PropertyRef Name="CODBAIRRO" />
+    </Key>
+    <Property Name="CODBAIRRO" Type="int" Nullable="false" />
+    <Property Name="UF" Type="varchar" MaxLength="2" />
+    <Property Name="CODLOCALIDADE" Type="int" />
+    <Property Name="NOME" Type="varchar" MaxLength="72" />
+    <Property Name="ABREVIATURA" Type="varchar" MaxLength="36" />
+    <Property Name="RECCREATEDBY" Type="varchar" MaxLength="50" />
+    <Property Name="RECCREATEDON" Type="datetime" />
+    <Property Name="RECMODIFIEDBY" Type="varchar" MaxLength="50" />
+    <Property Name="RECMODIFIEDON" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GLOCALIDADE">
+    <Key>
+      <PropertyRef Name="CODLOCALIDADE" />
+    </Key>
+    <Property Name="CODLOCALIDADE" Type="int" Nullable="false" />
+    <Property Name="UF" Type="varchar" MaxLength="2" />
+    <Property Name="NOME" Type="varchar" MaxLength="72" />
+    <Property Name="CEP" Type="varchar" MaxLength="8" />
+    <Property Name="CODIFICACAO" Type="char" MaxLength="1" />
+    <Property Name="TIPOLOCALIDADE" Type="char" MaxLength="1" />
+    <Property Name="SUBORDINACAO" Type="int" />
+    <Property Name="RECCREATEDBY" Type="varchar" MaxLength="50" />
+    <Property Name="RECCREATEDON" Type="datetime" />
+    <Property Name="RECMODIFIEDBY" Type="varchar" MaxLength="50" />
+    <Property Name="RECMODIFIEDON" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GLOGRADOURO">
+    <Key>
+      <PropertyRef Name="CODLOGRADOURO" />
+    </Key>
+    <Property Name="CODLOGRADOURO" Type="int" Nullable="false" />
+    <Property Name="UF" Type="varchar" MaxLength="2" />
+    <Property Name="CODLOCALIDADE" Type="int" />
+    <Property Name="CODBAIRROINI" Type="int" />
+    <Property Name="CODBAIRROFIM" Type="int" />
+    <Property Name="NOME" Type="varchar" MaxLength="100" />
+    <Property Name="COMPLEMENTO" Type="varchar" MaxLength="100" />
+    <Property Name="CEP" Type="varchar" MaxLength="8" />
+    <Property Name="TIPO" Type="varchar" MaxLength="36" />
+    <Property Name="UTILIZATIPO" Type="char" MaxLength="1" />
+    <Property Name="RECCREATEDBY" Type="varchar" MaxLength="50" />
+    <Property Name="RECCREATEDON" Type="datetime" />
+    <Property Name="RECMODIFIEDBY" Type="varchar" MaxLength="50" />
+    <Property Name="RECMODIFIEDON" Type="datetime" />
+  </EntityType>
+  <Association Name="FKGBAIRRO_GLOCALIDADE">
+    <End Role="GLOCALIDADE" Type="Self.GLOCALIDADE" Multiplicity="0..1" />
+    <End Role="GBAIRRO" Type="Self.GBAIRRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GLOCALIDADE">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Principal>
+      <Dependent Role="GBAIRRO">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKGLOGRADOURO_GBAIRROFIM">
+    <End Role="GBAIRRO" Type="Self.GBAIRRO" Multiplicity="0..1" />
+    <End Role="GLOGRADOURO" Type="Self.GLOGRADOURO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GBAIRRO">
+        <PropertyRef Name="CODBAIRRO" />
+      </Principal>
+      <Dependent Role="GLOGRADOURO">
+        <PropertyRef Name="CODBAIRROFIM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKGLOGRADOURO_GBAIRROINI">
+    <End Role="GBAIRRO" Type="Self.GBAIRRO" Multiplicity="0..1" />
+    <End Role="GLOGRADOURO" Type="Self.GLOGRADOURO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GBAIRRO">
+        <PropertyRef Name="CODBAIRRO" />
+      </Principal>
+      <Dependent Role="GLOGRADOURO">
+        <PropertyRef Name="CODBAIRROINI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKGLOGRADOURO_GLOCALIDADE">
+    <End Role="GLOCALIDADE" Type="Self.GLOCALIDADE" Multiplicity="0..1" />
+    <End Role="GLOGRADOURO" Type="Self.GLOGRADOURO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GLOCALIDADE">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Principal>
+      <Dependent Role="GLOGRADOURO">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CorporeRM_FabaoModelStoreContainer">
+    <EntitySet Name="GBAIRRO" EntityType="Self.GBAIRRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GLOCALIDADE" EntityType="Self.GLOCALIDADE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GLOGRADOURO" EntityType="Self.GLOGRADOURO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FKGBAIRRO_GLOCALIDADE" Association="Self.FKGBAIRRO_GLOCALIDADE">
+      <End Role="GLOCALIDADE" EntitySet="GLOCALIDADE" />
+      <End Role="GBAIRRO" EntitySet="GBAIRRO" />
+    </AssociationSet>
+    <AssociationSet Name="FKGLOGRADOURO_GBAIRROFIM" Association="Self.FKGLOGRADOURO_GBAIRROFIM">
+      <End Role="GBAIRRO" EntitySet="GBAIRRO" />
+      <End Role="GLOGRADOURO" EntitySet="GLOGRADOURO" />
+    </AssociationSet>
+    <AssociationSet Name="FKGLOGRADOURO_GBAIRROINI" Association="Self.FKGLOGRADOURO_GBAIRROINI">
+      <End Role="GBAIRRO" EntitySet="GBAIRRO" />
+      <End Role="GLOGRADOURO" EntitySet="GLOGRADOURO" />
+    </AssociationSet>
+    <AssociationSet Name="FKGLOGRADOURO_GLOCALIDADE" Association="Self.FKGLOGRADOURO_GLOCALIDADE">
+      <End Role="GLOCALIDADE" EntitySet="GLOCALIDADE" />
+      <End Role="GLOGRADOURO" EntitySet="GLOGRADOURO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

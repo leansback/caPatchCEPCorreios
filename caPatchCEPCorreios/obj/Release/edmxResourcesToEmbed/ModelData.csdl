@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CorporeRM_FabaoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="GBAIRRO">
+    <Key>
+      <PropertyRef Name="CODBAIRRO" />
+    </Key>
+    <Property Name="CODBAIRRO" Type="Int32" Nullable="false" />
+    <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CODLOCALIDADE" Type="Int32" />
+    <Property Name="NOME" Type="String" MaxLength="72" FixedLength="false" Unicode="false" />
+    <Property Name="ABREVIATURA" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="RECCREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RECCREATEDON" Type="DateTime" Precision="3" />
+    <Property Name="RECMODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RECMODIFIEDON" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GLOCALIDADE" Relationship="Self.FKGBAIRRO_GLOCALIDADE" FromRole="GBAIRRO" ToRole="GLOCALIDADE" />
+    <NavigationProperty Name="GLOGRADOURO" Relationship="Self.FKGLOGRADOURO_GBAIRROFIM" FromRole="GBAIRRO" ToRole="GLOGRADOURO" />
+    <NavigationProperty Name="GLOGRADOURO1" Relationship="Self.FKGLOGRADOURO_GBAIRROINI" FromRole="GBAIRRO" ToRole="GLOGRADOURO" />
+  </EntityType>
+  <EntityType Name="GLOCALIDADE">
+    <Key>
+      <PropertyRef Name="CODLOCALIDADE" />
+    </Key>
+    <Property Name="CODLOCALIDADE" Type="Int32" Nullable="false" />
+    <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="NOME" Type="String" MaxLength="72" FixedLength="false" Unicode="false" />
+    <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="CODIFICACAO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TIPOLOCALIDADE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SUBORDINACAO" Type="Int32" />
+    <Property Name="RECCREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RECCREATEDON" Type="DateTime" Precision="3" />
+    <Property Name="RECMODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RECMODIFIEDON" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GBAIRRO" Relationship="Self.FKGBAIRRO_GLOCALIDADE" FromRole="GLOCALIDADE" ToRole="GBAIRRO" />
+    <NavigationProperty Name="GLOGRADOURO" Relationship="Self.FKGLOGRADOURO_GLOCALIDADE" FromRole="GLOCALIDADE" ToRole="GLOGRADOURO" />
+  </EntityType>
+  <EntityType Name="GLOGRADOURO">
+    <Key>
+      <PropertyRef Name="CODLOGRADOURO" />
+    </Key>
+    <Property Name="CODLOGRADOURO" Type="Int32" Nullable="false" />
+    <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CODLOCALIDADE" Type="Int32" />
+    <Property Name="CODBAIRROINI" Type="Int32" />
+    <Property Name="CODBAIRROFIM" Type="Int32" />
+    <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPLEMENTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CEP" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Name="UTILIZATIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="RECCREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RECCREATEDON" Type="DateTime" Precision="3" />
+    <Property Name="RECMODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RECMODIFIEDON" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GBAIRRO" Relationship="Self.FKGLOGRADOURO_GBAIRROFIM" FromRole="GLOGRADOURO" ToRole="GBAIRRO" />
+    <NavigationProperty Name="GBAIRRO1" Relationship="Self.FKGLOGRADOURO_GBAIRROINI" FromRole="GLOGRADOURO" ToRole="GBAIRRO" />
+    <NavigationProperty Name="GLOCALIDADE" Relationship="Self.FKGLOGRADOURO_GLOCALIDADE" FromRole="GLOGRADOURO" ToRole="GLOCALIDADE" />
+  </EntityType>
+  <Association Name="FKGBAIRRO_GLOCALIDADE">
+    <End Role="GLOCALIDADE" Type="Self.GLOCALIDADE" Multiplicity="0..1" />
+    <End Role="GBAIRRO" Type="Self.GBAIRRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GLOCALIDADE">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Principal>
+      <Dependent Role="GBAIRRO">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKGLOGRADOURO_GBAIRROFIM">
+    <End Role="GBAIRRO" Type="Self.GBAIRRO" Multiplicity="0..1" />
+    <End Role="GLOGRADOURO" Type="Self.GLOGRADOURO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GBAIRRO">
+        <PropertyRef Name="CODBAIRRO" />
+      </Principal>
+      <Dependent Role="GLOGRADOURO">
+        <PropertyRef Name="CODBAIRROFIM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKGLOGRADOURO_GBAIRROINI">
+    <End Role="GBAIRRO" Type="Self.GBAIRRO" Multiplicity="0..1" />
+    <End Role="GLOGRADOURO" Type="Self.GLOGRADOURO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GBAIRRO">
+        <PropertyRef Name="CODBAIRRO" />
+      </Principal>
+      <Dependent Role="GLOGRADOURO">
+        <PropertyRef Name="CODBAIRROINI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKGLOGRADOURO_GLOCALIDADE">
+    <End Role="GLOCALIDADE" Type="Self.GLOCALIDADE" Multiplicity="0..1" />
+    <End Role="GLOGRADOURO" Type="Self.GLOGRADOURO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GLOCALIDADE">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Principal>
+      <Dependent Role="GLOGRADOURO">
+        <PropertyRef Name="CODLOCALIDADE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CorporeRM_FabaoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="GBAIRRO" EntityType="Self.GBAIRRO" />
+    <EntitySet Name="GLOCALIDADE" EntityType="Self.GLOCALIDADE" />
+    <EntitySet Name="GLOGRADOURO" EntityType="Self.GLOGRADOURO" />
+    <AssociationSet Name="FKGBAIRRO_GLOCALIDADE" Association="Self.FKGBAIRRO_GLOCALIDADE">
+      <End Role="GLOCALIDADE" EntitySet="GLOCALIDADE" />
+      <End Role="GBAIRRO" EntitySet="GBAIRRO" />
+    </AssociationSet>
+    <AssociationSet Name="FKGLOGRADOURO_GBAIRROFIM" Association="Self.FKGLOGRADOURO_GBAIRROFIM">
+      <End Role="GBAIRRO" EntitySet="GBAIRRO" />
+      <End Role="GLOGRADOURO" EntitySet="GLOGRADOURO" />
+    </AssociationSet>
+    <AssociationSet Name="FKGLOGRADOURO_GBAIRROINI" Association="Self.FKGLOGRADOURO_GBAIRROINI">
+      <End Role="GBAIRRO" EntitySet="GBAIRRO" />
+      <End Role="GLOGRADOURO" EntitySet="GLOGRADOURO" />
+    </AssociationSet>
+    <AssociationSet Name="FKGLOGRADOURO_GLOCALIDADE" Association="Self.FKGLOGRADOURO_GLOCALIDADE">
+      <End Role="GLOCALIDADE" EntitySet="GLOCALIDADE" />
+      <End Role="GLOGRADOURO" EntitySet="GLOGRADOURO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
