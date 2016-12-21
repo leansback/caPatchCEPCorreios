@@ -3,6 +3,7 @@ namespace caPatchCEPCorreios.Classe
 {
     public class LayoutAtualizacaoBairro
     {
+
         #region Properties
 
         public string Uf { get; set; }
