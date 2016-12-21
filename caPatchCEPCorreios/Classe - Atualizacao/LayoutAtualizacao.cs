@@ -6,6 +6,9 @@ namespace caPatchCEPCorreios.Classe
     {
 
 
+
+
+
         #region Properties
 
         public string Uf { get; set; }
